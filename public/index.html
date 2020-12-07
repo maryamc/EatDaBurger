@@ -7,6 +7,7 @@
     <!-- bootstrap cdn -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="../public/assets/css/burger.css">
     <title>Eat Da Burger</title>
 
 </head>
@@ -14,8 +15,8 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center" id="top-bar">
-                <img src="..." alt="burger" />
+            <div class="col-md-12 text-center" id="heading">
+                <img class="burgerImg" src="./assets/images/burger.png" alt="burger" />
                 <h1>Eat-Da-Burger!</h1>
             </div>
         </div>
@@ -23,11 +24,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center enter_section">
-                <p>Enter a burger you want to eat & click the "Submit" button.</p>
-                <form class="add-burger">
+            <div class="col-md-12 text-center " id="submitText">
+                <p>Enter a burger of your deepest darkest desires and & click the "Submit" button.</p>
+                <form class="addBurger">
                     <input type="text" class="form-control" name="burger_name" value="" id="burger_name" />
-                    <button type="submit" class="btn btn-primary" id="text-enter-button">
+                    <button type="submit" class="btn btn-danger" id="text-enter-button">
                         Submit
                     </button>
                 </form>
@@ -37,7 +38,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center enter_section">
+            <div class="col-md-12 text-center " id="eatDelete">
                 <p>Eat and Delete a burger.</p>
             </div>
         </div>

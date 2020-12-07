@@ -7,7 +7,7 @@ var PORT = process.env.PORT || 8080;
 
 // setting up the express app to handle the data parsing
 app.use(express.urlencoded({extended: true}));
-appendFile,use(express.json());
+app.use(express.json());
 
 // adding server listener
 app.listen(PORT, function(){
