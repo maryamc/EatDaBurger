@@ -1,13 +1,27 @@
 body {
     width: 99%;
     height: 900px;
-    background-color: #fc6;
+    background-color: rgb(17, 16, 14);
   }
   
-  #top-bar {
+  #heading {
     margin-top: 28px;
   }
-  
+
+#submitText{
+    color: red;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #eatDelete{
+    color:red;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }  
   .spacing-reset {
     padding: 0;
     margin: 0;
@@ -19,24 +33,6 @@ body {
     margin: 0;
     list-style-type: none;
     border: 0;
-  }
-  
-  @media (min-width: 1200px) {
-    .container {
-      width: 990px;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .container {
-      width: 990px;
-    }
-  }
-  
-  .enter_section {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
   }
   
   #enter_text {
@@ -64,9 +60,28 @@ body {
   }
   
   h1 {
-    color: #f30;
+    color: red;
   }
   
   .burger-row {
     padding: 10px 0;
+  }
+
+  .burgerImg {
+    height: 200px;
+    width: 200px;
+  }
+
+  
+
+  @media (min-width: 1200px) {
+    .container {
+      width: 990px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      width: 990px;
+    }
   }
