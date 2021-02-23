@@ -1,79 +1,52 @@
 $(function () {
-    $.ajax("/api/burgers", {
+    $.ajax("/burgers", {
         type: "GET"
     }).then(function (data) {
-        var devoured = $("#devoured");
-        var notDevoured = $("#notDevoured");
-
+        var eaten = $("#devoured");
+        var notEaten = $("#notDevoured");
         var burgers = data.burgers;
         var len = burgers.length;
-
         for (var i = 0; i < len; i++) {
             var new_elem =
                 "<li>" +
                 burgers[i].id +
                 ". " + burgers[i].burger_name +
-                "<button class='devour' data-id='" +
+                " <button class='btn btn-success devour' data-id='" +
                 burgers[i].id +
-                "' data-devouredBurger='" +
+                "' data-devouredburger='" +
                 !burgers[i].devoured +
-                "'>";
+                "'> ";
 
-            if (cats[i].devoured) {
-                new_elem += "Devoured";
+            if (!burgers[i].devoured) {
+                new_elem += "Eat It!";
             } else {
-                new_elem += "Not Devoured";
+                new_elem += "One more?";
             }
 
             new_elem += "</button>";
 
             new_elem +=
-                "<button class='delete-burger' data-id='" +
+                " <button class='btn btn-danger delete' data-id='" +
                 burgers[i].id +
-                "'>DELETE!</button></li>";
+                "'> Delete It!</button></li>";
 
-            if (cats[i].devoured) {
-                devoured.append(new_elem);
+            if (burgers[i].devoured) {
+                eaten.append(new_elem);
             } else {
-                notDevoured.append(new_elem);
+                notEaten.append(new_elem);
             }
         }
-    });
-
-    $(document).on("click", ".devour", function (event) {
-        var id = $(this).data("id");
-        var devouredBurger = $(this).data("devouredBurger") === true;
-
-        var newlyDevoured = {
-            devour: devouredBurger
-        };
-
-        // Send the PUT request.
-        $.ajax("/api/burgers" + id, {
-            type: "PUT",
-            data: JSON.stringify(newlyDevoured),
-            dataType: 'json',
-            contentType: 'application/json'
-        }).then(function () {
-            console.log("burger devoured", devouredBurger);
-            // Reload the page to get the updated list
-            location.reload();
-        });
     });
 
     $(".create-form").on("submit", function (event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
 
-        var newBurger = {
-            burger_name: $("#burgerName").val().trim(),
+        var newBurger = { burger_name: $("#burgerName").val().trim() }
 
-            devoured: $("#devoured").val().trim()
-
-        };
 
         // Send the POST request.
-        $.ajax("/api/burgers", {
+        $.ajax("/burgers", {
             type: "POST",
             data: JSON.stringify(newBurger),
             dataType: 'json',
@@ -85,11 +58,33 @@ $(function () {
         });
     });
 
-    $(document).on("click", ".delete-burger", function (event) {
+    $(document).on("click", ".devour", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var devouredBurger = $(this).data("devouredburger")
+
+        var devouredBurgerState = {
+            devoured: devouredBurger
+        };
+
+        // Send the PUT request.
+        $.ajax("/burgers/" + id, {
+            type: "PUT",
+            data: JSON.stringify(devouredBurgerState),
+            dataType: 'json',
+            contentType: 'application/json'
+        }).then(function () {
+            console.log("burger devoured", devouredBurgerState);
+            // Reload the page to get the updated list
+            location.reload();
+        });
+    });
+
+    $(document).on("click", ".delete", function (event) {
         var id = $(this).data("id");
 
         // Send the DELETE request.
-        $.ajax("/api/burgers" + id, {
+        $.ajax("/burgers/" + id, {
             type: "DELETE"
         }).then(function () {
             console.log("deleted burger", id);
